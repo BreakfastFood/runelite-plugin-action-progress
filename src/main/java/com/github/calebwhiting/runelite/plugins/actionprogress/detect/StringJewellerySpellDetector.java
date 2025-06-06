@@ -1,5 +1,6 @@
 package com.github.calebwhiting.runelite.plugins.actionprogress.detect;
 
+import com.github.calebwhiting.runelite.api.InventoryManager;
 import com.github.calebwhiting.runelite.data.Magic;
 import com.github.calebwhiting.runelite.plugins.actionprogress.Action;
 import com.github.calebwhiting.runelite.plugins.actionprogress.ActionProgressConfig;
@@ -16,6 +17,7 @@ import net.runelite.client.eventbus.Subscribe;
 @Singleton
 public class StringJewellerySpellDetector extends ActionDetector
 {
+	@Inject private InventoryManager inventoryManager;
 	@Inject private ActionProgressConfig config;
 
 	@Inject private Client client;
@@ -48,7 +50,7 @@ public class StringJewellerySpellDetector extends ActionDetector
 					continue;
 				}
 
-				int amount = Math.min(inventory.count(itemId), spell.getAvailableCasts(this.client));
+				int amount = Math.min(inventory.count(itemId), spell.getAvailableCasts(this.client, inventoryManager));
 				this.actionManager.setAction(Action.MAGIC_STRING_JEWELLERY, amount, itemId);
 				break;
 			}

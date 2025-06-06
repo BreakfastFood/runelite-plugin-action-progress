@@ -2,7 +2,7 @@ package com.github.calebwhiting.runelite.data;
 
 import com.github.calebwhiting.runelite.api.InventoryManager;
 import lombok.Data;
-import static net.runelite.api.ItemID.*;
+import net.runelite.api.gameval.ItemID;
 
 @Data
 public class Recipe
@@ -86,20 +86,15 @@ public class Recipe
 
 	private int getMakeProductCountWithTool(int amount){
 		int toolAmount = Integer.MAX_VALUE;
-		switch (productId) {
-			case CANNONBALL:
-				if (tool != null && tool.getItemId() == DOUBLE_AMMO_MOULD){
-					//Round up since the double ammo mould is able to smelt with only one silver bar
-					toolAmount = (int)Math.ceil((double)amount / 2);
-				}
-				else{
-					toolAmount = amount;
-				}
-				break;
-
-			default:
+		if (productId == ItemID.MCANNONBALL) {
+			if (tool != null && tool.getItemId() == ItemID.DOUBLE_AMMO_MOULD) {
+				//Round up since the double ammo mould is able to smelt with only one silver bar
+				toolAmount = (int) Math.ceil((double) amount / 2);
+			} else {
 				toolAmount = amount;
-				break;
+			}
+		} else {
+			toolAmount = amount;
 		}
 		return toolAmount;
 	}

@@ -1,5 +1,6 @@
 package com.github.calebwhiting.runelite.plugins.actionprogress.detect;
 
+import com.github.calebwhiting.runelite.api.InventoryManager;
 import com.github.calebwhiting.runelite.data.Magic;
 import com.github.calebwhiting.runelite.plugins.actionprogress.Action;
 import com.github.calebwhiting.runelite.plugins.actionprogress.ActionProgressConfig;
@@ -18,6 +19,7 @@ import net.runelite.client.eventbus.Subscribe;
 @Singleton
 public class PlankMakeSpellDetector extends ActionDetector
 {
+	@Inject private InventoryManager inventoryManager;
 
 	@Inject private ActionProgressConfig config;
 
@@ -60,7 +62,7 @@ public class PlankMakeSpellDetector extends ActionDetector
 				}
 			}
 
-			int amount = Math.min(inventory.count(itemId), Math.min(spell.getAvailableCasts(this.client), coinsQuantity / plankMakeSpell.getCost()));
+			int amount = Math.min(inventory.count(itemId), Math.min(spell.getAvailableCasts(this.client, inventoryManager), coinsQuantity / plankMakeSpell.getCost()));
 			this.actionManager.setAction(Action.MAGIC_PLANK_MAKE, amount, itemId);
 			break;
 		}

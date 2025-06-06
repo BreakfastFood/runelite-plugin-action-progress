@@ -1,17 +1,19 @@
 package com.github.calebwhiting.runelite.data;
 
+import com.github.calebwhiting.runelite.api.InventoryManager;
+import com.google.inject.Inject;
 import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import net.runelite.api.Client;
 import net.runelite.api.EnumComposition;
 import net.runelite.api.EnumID;
-import net.runelite.api.InventoryID;
+import net.runelite.api.gameval.InventoryID;
 import net.runelite.api.ItemContainer;
-import net.runelite.api.ItemID;
-import org.apache.commons.lang3.ArrayUtils;
-import net.runelite.api.Varbits;
 import net.runelite.api.annotations.Varbit;
+import net.runelite.api.gameval.ItemID;
+import org.apache.commons.lang3.ArrayUtils;
+import net.runelite.api.gameval.VarbitID;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -663,20 +665,20 @@ public interface Magic
 	@Getter
 	enum StringJewellerySpell
 	{
-		STRING_STRUNG_RABBIT_FOOT(LunarSpell.STRING_JEWELLERY, ItemID.RABBIT_FOOT),
-		STRING_HOLY_SYMBOL(LunarSpell.STRING_JEWELLERY, ItemID.UNSTRUNG_SYMBOL),
-		STRING_UNHOLY_SYMBOL(LunarSpell.STRING_JEWELLERY, ItemID.UNSTRUNG_EMBLEM),
-		STRING_OPAL_AMULET(LunarSpell.STRING_JEWELLERY, ItemID.OPAL_AMULET_U),
-		STRING_JADE_AMULET(LunarSpell.STRING_JEWELLERY, ItemID.JADE_AMULET_U),
-		STRING_SAPPHIRE_AMULET(LunarSpell.STRING_JEWELLERY, ItemID.SAPPHIRE_AMULET_U),
-		STRING_TOPAZ_AMULET(LunarSpell.STRING_JEWELLERY, ItemID.TOPAZ_AMULET_U),
-		STRING_EMERALD_AMULET(LunarSpell.STRING_JEWELLERY, ItemID.EMERALD_AMULET_U),
-		STRING_RUBY_AMULET(LunarSpell.STRING_JEWELLERY, ItemID.RUBY_AMULET_U),
-		STRING_GOLD_AMULET(LunarSpell.STRING_JEWELLERY, ItemID.GOLD_AMULET_U),
-		STRING_DIAMOND_AMULET(LunarSpell.STRING_JEWELLERY, ItemID.DIAMOND_AMULET_U),
-		STRING_DRAGONSTONE_AMULET(LunarSpell.STRING_JEWELLERY, ItemID.DRAGONSTONE_AMULET_U),
-		STRING_ONYX_AMULET(LunarSpell.STRING_JEWELLERY, ItemID.ONYX_AMULET_U),
-		STRING_ZENYTE_AMULET(LunarSpell.STRING_JEWELLERY, ItemID.ZENYTE_AMULET_U);
+		STRING_STRUNG_RABBIT_FOOT(LunarSpell.STRING_JEWELLERY, ItemID.HUNTING_RABBIT_FOOT),
+		STRING_HOLY_SYMBOL(LunarSpell.STRING_JEWELLERY, ItemID.NOSTRINGSTAR),
+		STRING_UNHOLY_SYMBOL(LunarSpell.STRING_JEWELLERY, ItemID.NOSTRINGSTAR),
+		STRING_OPAL_AMULET(LunarSpell.STRING_JEWELLERY, ItemID.UNSTRUNG_OPAL_AMULET),
+		STRING_JADE_AMULET(LunarSpell.STRING_JEWELLERY, ItemID.UNSTRUNG_JADE_AMULET),
+		STRING_SAPPHIRE_AMULET(LunarSpell.STRING_JEWELLERY, ItemID.UNSTRUNG_SAPPHIRE_AMULET),
+		STRING_TOPAZ_AMULET(LunarSpell.STRING_JEWELLERY, ItemID.UNSTRUNG_TOPAZ_AMULET),
+		STRING_EMERALD_AMULET(LunarSpell.STRING_JEWELLERY, ItemID.UNSTRUNG_EMERALD_AMULET),
+		STRING_RUBY_AMULET(LunarSpell.STRING_JEWELLERY, ItemID.UNSTRUNG_RUBY_AMULET),
+		STRING_GOLD_AMULET(LunarSpell.STRING_JEWELLERY, ItemID.UNSTRUNG_GOLD_AMULET),
+		STRING_DIAMOND_AMULET(LunarSpell.STRING_JEWELLERY, ItemID.UNSTRUNG_DIAMOND_AMULET),
+		STRING_DRAGONSTONE_AMULET(LunarSpell.STRING_JEWELLERY, ItemID.UNSTRUNG_DRAGONSTONE_AMULET),
+		STRING_ONYX_AMULET(LunarSpell.STRING_JEWELLERY, ItemID.UNSTRUNG_ONYX_AMULET),
+		STRING_ZENYTE_AMULET(LunarSpell.STRING_JEWELLERY, ItemID.ZENYTE_AMULET);
 
 		private final Spell spell;
 
@@ -716,6 +718,7 @@ public interface Magic
 	@Getter
 	enum Rune
 	{
+
 		AIR("Air", RuneIDs.AIR.build(), StaveIDs.AIR.build()),
 		WATER("Water", RuneIDs.WATER.build(), new IDs(StaveIDs.WATER, ItemID.TOME_OF_WATER).build()),
 		EARTH("Earth", RuneIDs.EARTH.build(), new IDs(StaveIDs.EARTH, ItemID.TOME_OF_EARTH).build()),
@@ -741,12 +744,12 @@ public interface Magic
 		private static final int RUNE_POUCH_NUM_SLOTS = 4;
 
 		private static final int[] AMOUNT_VARBITS = {
-			Varbits.RUNE_POUCH_AMOUNT1, Varbits.RUNE_POUCH_AMOUNT2, Varbits.RUNE_POUCH_AMOUNT3, Varbits.RUNE_POUCH_AMOUNT4
+			VarbitID.RUNE_POUCH_QUANTITY_1, VarbitID.RUNE_POUCH_QUANTITY_2, VarbitID.RUNE_POUCH_QUANTITY_3, VarbitID.RUNE_POUCH_QUANTITY_4
 		};
 
 		private static final int[] RUNE_VARBITS =
 		{
-			Varbits.RUNE_POUCH_RUNE1, Varbits.RUNE_POUCH_RUNE2, Varbits.RUNE_POUCH_RUNE3, Varbits.RUNE_POUCH_RUNE4
+			VarbitID.RUNE_POUCH_TYPE_1, VarbitID.RUNE_POUCH_TYPE_2, VarbitID.RUNE_POUCH_TYPE_3, VarbitID.RUNE_POUCH_TYPE_4
 		};
 
 		Rune(String name, int... runeId)
@@ -754,10 +757,11 @@ public interface Magic
 			this(name, runeId, ArrayUtils.EMPTY_INT_ARRAY);
 		}
 
-		public int countAvailable(Client client)
+		public int countAvailable(Client client, InventoryManager inventoryManager)
 		{
+
 			for (int itemId : this.unlimitedSources) {
-				ItemContainer equipment = client.getItemContainer(InventoryID.EQUIPMENT);
+				ItemContainer equipment = client.getItemContainer(InventoryID.WORN);
 				if (equipment != null && equipment.contains(itemId)) {
 					return Integer.MAX_VALUE;
 				}
@@ -765,45 +769,52 @@ public interface Magic
 
 			EnumComposition runepouchEnum = client.getEnum(EnumID.RUNEPOUCH_RUNE);
 			int count = 0;
-			
-			for (int itemId : this.runeIds) {				
-				for (int i = 0; i < RUNE_POUCH_NUM_SLOTS; i++){
-					@Varbit int runeVarbit = RUNE_VARBITS[i];
-					int runepouchRuneId = client.getVarbitValue(runeVarbit);
-					int runeId = runepouchEnum.getIntValue(runepouchRuneId);
-					if (runeId == itemId){
-						@Varbit int amountVarbit = AMOUNT_VARBITS[i];
-						int amount = client.getVarbitValue(amountVarbit);
-						count += amount;
+
+			for (int itemId : this.runeIds) {
+
+				//Inventory Contains Rune Pouch or Divine Rune Pouch
+				if(inventoryManager.getItemCountById(ItemID.DIVINE_RUNE_POUCH) > 0 || inventoryManager.getItemCountById(ItemID.BH_RUNE_POUCH) > 0) {
+					for (int i = 0; i < RUNE_POUCH_NUM_SLOTS; i++) {
+						@Varbit
+						int runeVarbit = RUNE_VARBITS[i];
+						int runepouchRuneId = client.getVarbitValue(runeVarbit);
+						int runeId = runepouchEnum.getIntValue(runepouchRuneId);
+						if (runeId == itemId) {
+							@Varbit
+							int amountVarbit = AMOUNT_VARBITS[i];
+							int amount = client.getVarbitValue(amountVarbit);
+							count += amount;
+						}
 					}
 				}
 				
-				ItemContainer inventory = client.getItemContainer(InventoryID.INVENTORY);
+				ItemContainer inventory = client.getItemContainer(InventoryID.INV);
 				count += inventory == null ? 0 : inventory.count(itemId);
 			}
 			return count;
 		}
+
 	}
 
 	@Getter
 	@RequiredArgsConstructor
 	enum LecternSpell
 	{
-		ENCHANT_ONYX(ItemID.ENCHANT_ONYX, "Enchant onyx", StandardSpell.LVL_6_ENCHANT),
-		LUMBRIDGE_TELEPORT(ItemID.LUMBRIDGE_TELEPORT, "Lumbridge teleport", StandardSpell.LUMBRIDGE_TELEPORT),
-		ENCHANT_DIAMOND(ItemID.ENCHANT_DIAMOND, "Enchant diamond", StandardSpell.LVL_4_ENCHANT),
-		WATCHTOWER_TELEPORT(ItemID.WATCHTOWER_TELEPORT, "Watchtower teleport", StandardSpell.WATCHTOWER_TELEPORT),
-		HOUSE_TELEPORT(ItemID.TELEPORT_TO_HOUSE, "Teleport to house", StandardSpell.TELEPORT_TO_HOUSE),
-		ENCHANT_EMERALD(ItemID.ENCHANT_EMERALD_OR_JADE, "Enchant emerald", StandardSpell.LVL_2_ENCHANT),
-		ENCHANT_SAPPHIRE(ItemID.ENCHANT_SAPPHIRE_OR_OPAL, "Enchant sapphire", StandardSpell.LVL_1_ENCHANT),
-		FALADOR_TELEPORT(ItemID.FALADOR_TELEPORT, "Falador teleport", StandardSpell.FALADOR_TELEPORT),
-		ARDOUGNE_TELEPORT(ItemID.ARDOUGNE_TELEPORT, "Ardougne teleport", StandardSpell.ARDOUGNE_TELEPORT),
-		BONES_TO_BANANAS(ItemID.BONES_TO_BANANAS, "Bones to bananas", StandardSpell.BONES_TO_BANANAS),
-		ENCHANT_DRAGONSTONE(ItemID.ENCHANT_DRAGONSTONE, "Enchant dragonstone", StandardSpell.LVL_5_ENCHANT),
-		ENCHANT_RUBY(ItemID.ENCHANT_RUBY_OR_TOPAZ, "Enchant ruby", StandardSpell.LVL_3_ENCHANT),
-		VARROCK_TELEPORT(ItemID.VARROCK_TELEPORT, "Varrock teleport", StandardSpell.VARROCK_TELEPORT),
-		CAMELOT_TELEPORT(ItemID.CAMELOT_TELEPORT, "Camelot teleport", StandardSpell.CAMELOT_TELEPORT),
-		BONES_TO_PEACHES(ItemID.BONES_TO_PEACHES, "Bones to peaches", StandardSpell.BONES_TO_PEACHES);
+		ENCHANT_ONYX(ItemID.POH_TABLET_ENCHANTONYX, "Enchant onyx", StandardSpell.LVL_6_ENCHANT),
+		LUMBRIDGE_TELEPORT(ItemID.POH_TABLET_LUMBRIDGETELEPORT, "Lumbridge teleport", StandardSpell.LUMBRIDGE_TELEPORT),
+		ENCHANT_DIAMOND(ItemID.POH_TABLET_ENCHANTDIAMOND, "Enchant diamond", StandardSpell.LVL_4_ENCHANT),
+		WATCHTOWER_TELEPORT(ItemID.POH_TABLET_WATCHTOWERTELEPORT, "Watchtower teleport", StandardSpell.WATCHTOWER_TELEPORT),
+		HOUSE_TELEPORT(ItemID.POH_TABLET_TELEPORTTOHOUSE, "Teleport to house", StandardSpell.TELEPORT_TO_HOUSE),
+		ENCHANT_EMERALD(ItemID.POH_TABLET_ENCHANTEMERALD, "Enchant emerald", StandardSpell.LVL_2_ENCHANT),
+		ENCHANT_SAPPHIRE(ItemID.POH_TABLET_ENCHANTSAPPHIRE, "Enchant sapphire", StandardSpell.LVL_1_ENCHANT),
+		FALADOR_TELEPORT(ItemID.POH_TABLET_FALADORTELEPORT, "Falador teleport", StandardSpell.FALADOR_TELEPORT),
+		ARDOUGNE_TELEPORT(ItemID.POH_TABLET_ARDOUGNETELEPORT, "Ardougne teleport", StandardSpell.ARDOUGNE_TELEPORT),
+		BONES_TO_BANANAS(ItemID.POH_TABLET_BONESTOBANANAS, "Bones to bananas", StandardSpell.BONES_TO_BANANAS),
+		ENCHANT_DRAGONSTONE(ItemID.POH_TABLET_ENCHANTDRAGONSTONE, "Enchant dragonstone", StandardSpell.LVL_5_ENCHANT),
+		ENCHANT_RUBY(ItemID.POH_TABLET_ENCHANTRUBY, "Enchant ruby", StandardSpell.LVL_3_ENCHANT),
+		VARROCK_TELEPORT(ItemID.POH_TABLET_VARROCKTELEPORT, "Varrock teleport", StandardSpell.VARROCK_TELEPORT),
+		CAMELOT_TELEPORT(ItemID.POH_TABLET_CAMELOTTELEPORT, "Camelot teleport", StandardSpell.CAMELOT_TELEPORT),
+		BONES_TO_PEACHES(ItemID.POH_TABLET_BONESTOPEACHES, "Bones to peaches", StandardSpell.BONES_TO_PEACHES);
 
 		private final int product;
 
@@ -834,27 +845,26 @@ public interface Magic
 	@Getter
 	enum EnchantCrossbowBoltSpell
 	{
-		ENCHANT_OPAL_BOLT(ItemID.OPAL_BOLTS_E, ItemID.OPAL_BOLTS, new RuneRequirement(Rune.AIR, 2),new RuneRequirement(Rune.COSMIC, 1)),
-		ENCHANT_OPAL_DRAGON_BOLT(ItemID.OPAL_DRAGON_BOLTS_E, ItemID.OPAL_DRAGON_BOLTS, new RuneRequirement(Rune.AIR, 2),new RuneRequirement(Rune.COSMIC, 1)),
-		ENCHANT_JADE_BOLT(ItemID.JADE_BOLTS_E, ItemID.JADE_BOLTS, new RuneRequirement(Rune.EARTH, 2),new RuneRequirement(Rune.COSMIC, 1)),
-		ENCHANT_JADE_DRAGON_BOLT(ItemID.JADE_DRAGON_BOLTS_E, ItemID.JADE_DRAGON_BOLTS, new RuneRequirement(Rune.EARTH, 2),new RuneRequirement(Rune.COSMIC, 1)),
-		ENCHANT_PEARL_BOLT(ItemID.PEARL_BOLTS_E, ItemID.PEARL_BOLTS, new RuneRequirement(Rune.WATER, 2),new RuneRequirement(Rune.COSMIC, 1)),
-		ENCHANT_PEARL_DRAGON_BOLT(ItemID.PEARL_DRAGON_BOLTS_E, ItemID.PEARL_DRAGON_BOLTS, new RuneRequirement(Rune.WATER, 2),new RuneRequirement(Rune.COSMIC, 1)),
-		ENCHANT_TOPAZ_BOLT(ItemID.TOPAZ_BOLTS_E, ItemID.TOPAZ_BOLTS, new RuneRequirement(Rune.FIRE, 2),new RuneRequirement(Rune.COSMIC, 1)),
-		ENCHANT_TOPAZ_DRAGON_BOLT(ItemID.TOPAZ_DRAGON_BOLTS_E, ItemID.TOPAZ_DRAGON_BOLTS, new RuneRequirement(Rune.FIRE, 2),new RuneRequirement(Rune.COSMIC, 1)),
-		ENCHANT_SAPPHIRE_BOLT(ItemID.SAPPHIRE_BOLTS_E, ItemID.SAPPHIRE_BOLTS, new RuneRequirement(Rune.WATER, 1),new RuneRequirement(Rune.COSMIC, 1), new RuneRequirement(Rune.MIND, 1)),
-		ENCHANT_SAPPHIRE_DRAGON_BOLT(ItemID.SAPPHIRE_DRAGON_BOLTS_E, ItemID.SAPPHIRE_DRAGON_BOLTS, new RuneRequirement(Rune.WATER, 1),new RuneRequirement(Rune.COSMIC, 1), new RuneRequirement(Rune.MIND, 1)),
-		ENCHANT_EMERALD_BOLT(ItemID.EMERALD_BOLTS_E, ItemID.EMERALD_BOLTS, new RuneRequirement(Rune.AIR, 3),new RuneRequirement(Rune.COSMIC, 1), new RuneRequirement(Rune.NATURE, 1)),
-		ENCHANT_EMERALD_DRAGON_BOLT(ItemID.EMERALD_DRAGON_BOLTS_E, ItemID.EMERALD_DRAGON_BOLTS, new RuneRequirement(Rune.AIR, 3),new RuneRequirement(Rune.COSMIC, 1), new RuneRequirement(Rune.NATURE, 1)),
-		ENCHANT_RUBY_BOLT(ItemID.RUBY_BOLTS_E, ItemID.RUBY_BOLTS, new RuneRequirement(Rune.FIRE, 5),new RuneRequirement(Rune.COSMIC, 1), new RuneRequirement(Rune.BLOOD, 1)),
-		ENCHANT_RUBY_DRAGON_BOLT(ItemID.RUBY_DRAGON_BOLTS_E, ItemID.RUBY_DRAGON_BOLTS, new RuneRequirement(Rune.FIRE, 5),new RuneRequirement(Rune.COSMIC, 1), new RuneRequirement(Rune.BLOOD, 1)),
-		ENCHANT_DIAMOND_BOLT(ItemID.DIAMOND_BOLTS_E, ItemID.DIAMOND_BOLTS, new RuneRequirement(Rune.EARTH, 10),new RuneRequirement(Rune.COSMIC, 1), new RuneRequirement(Rune.LAW, 2)),
-		ENCHANT_DIAMOND_BOLT2(ItemID.DIAMOND_BOLTS_E_23649, ItemID.DIAMOND_BOLTS, new RuneRequirement(Rune.EARTH, 10),new RuneRequirement(Rune.COSMIC, 1), new RuneRequirement(Rune.LAW, 2)),
-		ENCHANT_DIAMOND_DRAGON_BOLT(ItemID.DIAMOND_DRAGON_BOLTS_E, ItemID.DIAMOND_DRAGON_BOLTS, new RuneRequirement(Rune.EARTH, 10),new RuneRequirement(Rune.COSMIC, 1), new RuneRequirement(Rune.LAW, 2)),
-		ENCHANT_DRAGONSTONE_BOLT(ItemID.DRAGONSTONE_BOLTS_E, ItemID.DRAGONSTONE_BOLTS, new RuneRequirement(Rune.EARTH, 15),new RuneRequirement(Rune.COSMIC, 1), new RuneRequirement(Rune.SOUL, 1)),
-		ENCHANT_DRAGONSTONE_DRAGON_BOLT(ItemID.DRAGONSTONE_DRAGON_BOLTS_E, ItemID.DRAGONSTONE_DRAGON_BOLTS, new RuneRequirement(Rune.EARTH, 15),new RuneRequirement(Rune.COSMIC, 1), new RuneRequirement(Rune.SOUL, 1)),
-		ENCHANT_ONYX_BOLT(ItemID.ONYX_BOLTS_E, ItemID.ONYX_BOLTS, new RuneRequirement(Rune.FIRE, 20),new RuneRequirement(Rune.COSMIC, 1), new RuneRequirement(Rune.DEATH, 1)),
-		ENCHANT_ONYX_DRAGON_BOLT(ItemID.ONYX_DRAGON_BOLTS_E, ItemID.ONYX_DRAGON_BOLTS, new RuneRequirement(Rune.FIRE, 20),new RuneRequirement(Rune.COSMIC, 1), new RuneRequirement(Rune.DEATH, 1));
+		ENCHANT_OPAL_BOLT(ItemID.XBOWS_CROSSBOW_BOLTS_BRONZE_TIPPED_OPAL_ENCHANTED, ItemID.OPAL_BOLTS, new RuneRequirement(Rune.AIR, 2),new RuneRequirement(Rune.COSMIC, 1)),
+		ENCHANT_OPAL_DRAGON_BOLT(ItemID.DRAGON_BOLTS_ENCHANTED_OPAL, ItemID.DRAGON_BOLTS_UNENCHANTED_OPAL, new RuneRequirement(Rune.AIR, 2),new RuneRequirement(Rune.COSMIC, 1)),
+		ENCHANT_JADE_BOLT(ItemID.XBOWS_CROSSBOW_BOLTS_BLURITE_TIPPED_JADE_ENCHANTED, ItemID.XBOWS_CROSSBOW_BOLTS_BLURITE_TIPPED_JADE, new RuneRequirement(Rune.EARTH, 2),new RuneRequirement(Rune.COSMIC, 1)),
+		ENCHANT_JADE_DRAGON_BOLT(ItemID.DRAGON_BOLTS_ENCHANTED_JADE, ItemID.DRAGON_BOLTS_UNENCHANTED_JADE, new RuneRequirement(Rune.EARTH, 2),new RuneRequirement(Rune.COSMIC, 1)),
+		ENCHANT_PEARL_BOLT(ItemID.XBOWS_CROSSBOW_BOLTS_IRON_TIPPED_PEARL_ENCHANTED, ItemID.PEARL_BOLTS, new RuneRequirement(Rune.WATER, 2),new RuneRequirement(Rune.COSMIC, 1)),
+		ENCHANT_PEARL_DRAGON_BOLT(ItemID.DRAGON_BOLTS_ENCHANTED_PEARL, ItemID.DRAGON_BOLTS_UNENCHANTED_PEARL, new RuneRequirement(Rune.WATER, 2),new RuneRequirement(Rune.COSMIC, 1)),
+		ENCHANT_TOPAZ_BOLT(ItemID.XBOWS_CROSSBOW_BOLTS_STEEL_TIPPED_REDTOPAZ_ENCHANTED, ItemID.XBOWS_CROSSBOW_BOLTS_STEEL_TIPPED_REDTOPAZ, new RuneRequirement(Rune.FIRE, 2),new RuneRequirement(Rune.COSMIC, 1)),
+		ENCHANT_TOPAZ_DRAGON_BOLT(ItemID.DRAGON_BOLTS_ENCHANTED_TOPAZ, ItemID.DRAGON_BOLTS_UNENCHANTED_TOPAZ, new RuneRequirement(Rune.FIRE, 2),new RuneRequirement(Rune.COSMIC, 1)),
+		ENCHANT_SAPPHIRE_BOLT(ItemID.XBOWS_CROSSBOW_BOLTS_MITHRIL_TIPPED_SAPPHIRE_ENCHANTED, ItemID.XBOWS_CROSSBOW_BOLTS_MITHRIL_TIPPED_SAPPHIRE, new RuneRequirement(Rune.WATER, 1),new RuneRequirement(Rune.COSMIC, 1), new RuneRequirement(Rune.MIND, 1)),
+		ENCHANT_SAPPHIRE_DRAGON_BOLT(ItemID.DRAGON_BOLTS_ENCHANTED_SAPPHIRE, ItemID.DRAGON_BOLTS_UNENCHANTED_SAPPHIRE, new RuneRequirement(Rune.WATER, 1),new RuneRequirement(Rune.COSMIC, 1), new RuneRequirement(Rune.MIND, 1)),
+		ENCHANT_EMERALD_BOLT(ItemID.XBOWS_CROSSBOW_BOLTS_MITHRIL_TIPPED_EMERALD_ENCHANTED, ItemID.XBOWS_CROSSBOW_BOLTS_MITHRIL_TIPPED_EMERALD, new RuneRequirement(Rune.AIR, 3),new RuneRequirement(Rune.COSMIC, 1), new RuneRequirement(Rune.NATURE, 1)),
+		ENCHANT_EMERALD_DRAGON_BOLT(ItemID.DRAGON_BOLTS_ENCHANTED_EMERALD, ItemID.DRAGON_BOLTS_UNENCHANTED_EMERALD, new RuneRequirement(Rune.AIR, 3),new RuneRequirement(Rune.COSMIC, 1), new RuneRequirement(Rune.NATURE, 1)),
+		ENCHANT_RUBY_BOLT(ItemID.XBOWS_CROSSBOW_BOLTS_ADAMANTITE_TIPPED_RUBY_ENCHANTED, ItemID.XBOWS_CROSSBOW_BOLTS_ADAMANTITE_TIPPED_RUBY, new RuneRequirement(Rune.FIRE, 5),new RuneRequirement(Rune.COSMIC, 1), new RuneRequirement(Rune.BLOOD, 1)),
+		ENCHANT_RUBY_DRAGON_BOLT(ItemID.DRAGON_BOLTS_ENCHANTED_RUBY, ItemID.DRAGON_BOLTS_UNENCHANTED_RUBY, new RuneRequirement(Rune.FIRE, 5),new RuneRequirement(Rune.COSMIC, 1), new RuneRequirement(Rune.BLOOD, 1)),
+		ENCHANT_DIAMOND_BOLT(ItemID.XBOWS_CROSSBOW_BOLTS_ADAMANTITE_TIPPED_DIAMOND_ENCHANTED, ItemID.XBOWS_CROSSBOW_BOLTS_ADAMANTITE_TIPPED_DIAMOND, new RuneRequirement(Rune.EARTH, 10),new RuneRequirement(Rune.COSMIC, 1), new RuneRequirement(Rune.LAW, 2)),
+		ENCHANT_DIAMOND_DRAGON_BOLT(ItemID.DRAGON_BOLTS_ENCHANTED_DIAMOND, ItemID.DRAGON_BOLTS_UNENCHANTED_DIAMOND, new RuneRequirement(Rune.EARTH, 10),new RuneRequirement(Rune.COSMIC, 1), new RuneRequirement(Rune.LAW, 2)),
+		ENCHANT_DRAGONSTONE_BOLT(ItemID.XBOWS_CROSSBOW_BOLTS_RUNITE_TIPPED_DRAGONSTONE_ENCHANTED, ItemID.XBOWS_CROSSBOW_BOLTS_RUNITE_TIPPED_DRAGONSTONE, new RuneRequirement(Rune.EARTH, 15),new RuneRequirement(Rune.COSMIC, 1), new RuneRequirement(Rune.SOUL, 1)),
+		ENCHANT_DRAGONSTONE_DRAGON_BOLT(ItemID.DRAGON_BOLTS_ENCHANTED_DRAGONSTONE, ItemID.DRAGON_BOLTS_UNENCHANTED_DRAGONSTONE, new RuneRequirement(Rune.EARTH, 15),new RuneRequirement(Rune.COSMIC, 1), new RuneRequirement(Rune.SOUL, 1)),
+		ENCHANT_ONYX_BOLT(ItemID.XBOWS_CROSSBOW_BOLTS_RUNITE_TIPPED_ONYX_ENCHANTED, ItemID.XBOWS_CROSSBOW_BOLTS_RUNITE_TIPPED_ONYX, new RuneRequirement(Rune.FIRE, 20),new RuneRequirement(Rune.COSMIC, 1), new RuneRequirement(Rune.DEATH, 1)),
+		ENCHANT_ONYX_DRAGON_BOLT(ItemID.DRAGON_BOLTS_ENCHANTED_ONYX, ItemID.DRAGON_BOLTS_UNENCHANTED_ONYX, new RuneRequirement(Rune.FIRE, 20),new RuneRequirement(Rune.COSMIC, 1), new RuneRequirement(Rune.DEATH, 1));
 
 		private final int product;
 
@@ -869,7 +879,7 @@ public interface Magic
 			this.runeRequirements = runeRequirements;
 		}
 
-		public static int getAvailableCasts(Client client, int productId)
+		public static int getAvailableCasts(Client client, InventoryManager inventoryManager, int productId)
 		{
 			EnchantCrossbowBoltSpell spell = Arrays.stream(values()).filter(x -> x.product == productId).findFirst().orElse(null);
 			Objects.requireNonNull(spell, "No enchant crossbow bolt spell found for product: " + productId);
@@ -877,12 +887,15 @@ public interface Magic
 			int min = Integer.MAX_VALUE;
 
 			for (RuneRequirement requirement : spell.getRuneRequirements()) {
-				int amount = requirement.getRune().countAvailable(client);
+				int amount = requirement.getRune().countAvailable(client, inventoryManager);
 				min = Math.min(min, amount / requirement.getAmount());
 			}
 
-			ItemContainer inventory = client.getItemContainer(InventoryID.INVENTORY);
-			return min = Math.min(min, inventory.count(spell.getSource()) / 10);
+			ItemContainer inventory = client.getItemContainer(InventoryID.INV);
+			if(inventory == null){
+				return 0;
+			}
+			return Math.min(min, inventory.count(spell.getSource()) / 10);
 		}
 	}
 
@@ -891,15 +904,15 @@ public interface Magic
 
 		IDs SMOKE = new IDs(
 				ItemID.SMOKE_BATTLESTAFF,
-				ItemID.MYSTIC_SMOKE_STAFF
+				ItemID.MYSTIC_SMOKE_BATTLESTAFF
 		);
 		IDs DUST = new IDs(
 				ItemID.DUST_BATTLESTAFF,
-				ItemID.MYSTIC_DUST_STAFF
+				ItemID.MYSTIC_DUST_BATTLESTAFF
 		);
 		IDs MIST = new IDs(
 				ItemID.MIST_BATTLESTAFF,
-				ItemID.MYSTIC_MIST_STAFF
+				ItemID.MYSTIC_MIST_BATTLESTAFF
 		);
 		IDs MUD = new IDs(
 				ItemID.MUD_BATTLESTAFF,
@@ -907,15 +920,15 @@ public interface Magic
 		);
 		IDs LAVA = new IDs(
 				ItemID.LAVA_BATTLESTAFF,
-				ItemID.LAVA_BATTLESTAFF_21198,
+				ItemID.LAVA_BATTLESTAFF_PRETTY,
 				ItemID.MYSTIC_LAVA_STAFF,
-				ItemID.MYSTIC_LAVA_STAFF_21200
+				ItemID.MYSTIC_LAVA_STAFF_PRETTY
 		);
 		IDs STEAM = new IDs(
 				ItemID.STEAM_BATTLESTAFF,
-				ItemID.STEAM_BATTLESTAFF_12795,
-				ItemID.MYSTIC_STEAM_STAFF,
-				ItemID.MYSTIC_STEAM_STAFF_12796
+				ItemID.STEAM_BATTLESTAFF_PRETTY,
+				ItemID.MYSTIC_STEAM_BATTLESTAFF,
+				ItemID.MYSTIC_STEAM_BATTLESTAFF_PRETTY
 		);
 		IDs AIR = new IDs(
 				SMOKE,
@@ -956,108 +969,75 @@ public interface Magic
 	interface RuneIDs
 	{
 
-		IDs SMOKE = new IDs(ItemID.SMOKE_RUNE);
-		IDs DUST = new IDs(ItemID.DUST_RUNE);
-		IDs LAVA = new IDs(ItemID.LAVA_RUNE);
-		IDs MIST = new IDs(ItemID.MIST_RUNE);
-		IDs MUD = new IDs(ItemID.MUD_RUNE);
-		IDs STEAM = new IDs(ItemID.STEAM_RUNE);
+		IDs SMOKE = new IDs(ItemID.SMOKERUNE);
+		IDs DUST = new IDs(ItemID.DUSTRUNE);
+		IDs LAVA = new IDs(ItemID.LAVARUNE);
+		IDs MIST = new IDs(ItemID.MISTRUNE);
+		IDs MUD = new IDs(ItemID.MUDRUNE);
+		IDs STEAM = new IDs(ItemID.STEAMRUNE);
 		IDs AIR = new IDs(
 				SMOKE,
 				DUST,
 				MIST,
-				ItemID.AIR_RUNE,
-				ItemID.AIR_RUNE_NZ,
-				ItemID.AIR_RUNE_6422,
-				ItemID.AIR_RUNE_7558,
-				ItemID.AIR_RUNE_9693,
-				ItemID.AIR_RUNE_11688
+				ItemID.AIRRUNE,
+				ItemID.NZONE_AIRRUNE
 		);
 		IDs WATER = new IDs(
 				MIST,
 				MUD,
 				STEAM,
-				ItemID.WATER_RUNE,
-				ItemID.WATER_RUNE_NZ,
-				ItemID.WATER_RUNE_6424,
-				ItemID.WATER_RUNE_7556,
-				ItemID.WATER_RUNE_9691,
-				ItemID.WATER_RUNE_11687
+				ItemID.WATERRUNE,
+				ItemID.NZONE_WATERRUNE
 		);
 		IDs EARTH = new IDs(
 				DUST,
 				LAVA,
 				MUD,
-				ItemID.EARTH_RUNE,
-				ItemID.EARTH_RUNE_NZ,
-				ItemID.EARTH_RUNE_6426,
-				ItemID.EARTH_RUNE_9695,
-				ItemID.EARTH_RUNE_11689
+				ItemID.EARTHRUNE,
+				ItemID.NZONE_EARTHRUNE
 		);
 		IDs FIRE = new IDs(
 				SMOKE,
 				LAVA,
 				STEAM,
-				ItemID.FIRE_RUNE,
-				ItemID.FIRE_RUNE_NZ,
-				ItemID.FIRE_RUNE_6428,
-				ItemID.FIRE_RUNE_7554,
-				ItemID.FIRE_RUNE_9699,
-				ItemID.FIRE_RUNE_11686
+				ItemID.FIRERUNE,
+				ItemID.NZONE_FIRERUNE
 		);
 		IDs MIND = new IDs(
-				ItemID.MIND_RUNE,
-				ItemID.MIND_RUNE_6436,
-				ItemID.MIND_RUNE_9697,
-				ItemID.MIND_RUNE_11690
+				ItemID.MINDRUNE
 		);
 		IDs BODY = new IDs(
-				ItemID.BODY_RUNE,
-				ItemID.BODY_RUNE_6438,
-				ItemID.BODY_RUNE_11691
+				ItemID.BODYRUNE
 		);
 		IDs COSMIC = new IDs(
-				ItemID.COSMIC_RUNE,
-				ItemID.COSMIC_RUNE_11696
+				ItemID.COSMICRUNE
 		);
 		IDs CHAOS = new IDs(
-				ItemID.CHAOS_RUNE,
-				ItemID.CHAOS_RUNE_NZ,
-				ItemID.CHAOS_RUNE_6430,
-				ItemID.CHAOS_RUNE_7560,
-				ItemID.CHAOS_RUNE_11694
+				ItemID.CHAOSRUNE,
+				ItemID.NZONE_CHAOSRUNE
 		);
 		IDs ASTRAL = new IDs(
-				ItemID.ASTRAL_RUNE,
-				ItemID.ASTRAL_RUNE_11699
+				ItemID.ASTRALRUNE
 		);
 		IDs NATURE = new IDs(
-				ItemID.NATURE_RUNE,
-				ItemID.NATURE_RUNE_11693
+				ItemID.NATURERUNE
 		);
 		IDs LAW = new IDs(
-				ItemID.LAW_RUNE,
-				ItemID.LAW_RUNE_6434,
-				ItemID.LAW_RUNE_11695
+				ItemID.LAWRUNE
 		);
 		IDs DEATH = new IDs(
-				ItemID.DEATH_RUNE,
-				ItemID.DEATH_RUNE_NZ,
-				ItemID.DEATH_RUNE_6432,
-				ItemID.DEATH_RUNE_11692
+				ItemID.DEATHRUNE,
+				ItemID.NZONE_DEATHRUNE
 		);
 		IDs BLOOD = new IDs(
-				ItemID.BLOOD_RUNE,
-				ItemID.BLOOD_RUNE_NZ,
-				ItemID.BLOOD_RUNE_11697
+				ItemID.BLOODRUNE,
+				ItemID.NZONE_BLOODRUNE
 		);
 		IDs SOUL = new IDs(
-				ItemID.SOUL_RUNE,
-				ItemID.SOUL_RUNE_11698
+				ItemID.SOULRUNE
 		);
 		IDs WRATH = new IDs(
-				ItemID.WRATH_RUNE,
-				ItemID.WRATH_RUNE_22208
+				ItemID.WRATHRUNE
 		);
 
 	}
@@ -1080,11 +1060,11 @@ public interface Magic
 			return this.getGroupId() << 16 | this.getChildId();
 		}
 
-		default int getAvailableCasts(Client client)
+		default int getAvailableCasts(Client client, InventoryManager inventoryManager)
 		{
 			int min = Integer.MAX_VALUE;
 			for (RuneRequirement requirement : this.getRuneRequirements()) {
-				int amount = requirement.getRune().countAvailable(client);
+				int amount = requirement.getRune().countAvailable(client,inventoryManager );
 				min = Math.min(min, amount / requirement.getAmount());
 			}
 			return min;

@@ -52,7 +52,7 @@ public class IDs
 	@Override
 	public String toString()
 	{
-		return "IDs{" + "" + this.ids + '}';
+		return "IDs{" + this.ids + '}';
 	}
 
 }
